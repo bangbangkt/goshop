@@ -1,0 +1,1074 @@
+
+//Setup 
+//color
+$gold:gold;
+$xamDam: #383838;
+$xanhNhat: #40bea7;
+$Trang:#ffffff;
+$xamTrang:#e7e7e7;
+$Do:#f23434;
+$trangNhat:#b8b8b8;
+$Xam: #a9a9a9;
+$Dam: #3f3f3f;
+
+//txt size/font
+$txt_S:13px;
+$txt_M:14px;
+$txt_L:16px;
+$txt_XL:18px;
+$txt_2XL:26px;
+$txt_3XL:30px;
+$txt_XXL:70px;
+$fontLato: "Lato", sans-serif;
+$fontRale:"Raleway";
+
+//setting btn
+@mixin set_btn-Col-Bg($color,$bg) {
+    color: $color;
+   background-color: $bg;
+}
+//setup margin- padding
+    @mixin set_MP($_Margin, $_Padding) {
+        margin: $_Margin;
+        padding: $_Padding;
+    }
+
+// setup Margin - left-top
+    @mixin set_Mg-TL ($mgTop, $mgLeft){
+        margin-top: $mgTop;
+        margin-left: $mgLeft;
+    }
+
+//setup width -height
+    @mixin  set_WH($_Width, $_Height){
+        width: $_Width;
+        height: $_Height;
+    }
+//setup position:absolute __top,right
+    @mixin set_absolute-TR($_Top,$_Right  ) {
+        position: absolute;
+        top: $_Top;
+        right: $_Right;
+    
+    }
+//setup position:absolute __top,left
+    @mixin set_absolute-TL($_Top,$_Left  ) {
+        position: absolute;
+        top: $_Top;
+        left: $_Left;
+    }
+
+    @mixin set_absolute-BL($bottom , $left) {
+        position: absolute;
+        bottom: $bottom;
+        left: $left;
+    }
+//setup position:relative
+    @mixin set_position-display( $position, $display){
+        position: $position;
+        display: $display;
+        
+    }
+
+    // set grid_column-row
+    @mixin set_gridColumn-row($starCol, $endCol, $starRow, $endRow){
+        position: relative;
+        display: grid;
+        // grid-row: ;
+        // grid-column: ;
+        grid-column-start: $starCol ;
+        grid-column-end:  $endCol;
+        grid-row-start: $starRow ;
+        grid-row-end:  $endRow;
+    }
+
+
+//setup tag a
+    @mixin set_Tag-A($_Size,$_Color) {
+        text-decoration: none;
+        font-size: $_Size;
+        color: $_Color;
+    }
+//setup peseudo hover 
+    @mixin set_Hover-bgColor($_bgColor,$_Color) {
+        background: $_bgColor;
+        color: $_Color;
+        transform: scale(1.1);
+        
+    }
+//set peseudo hover list
+    @mixin set_Hover-Li($bg) {
+        background:$bg ;
+        transform: 2s;  
+        a{
+            color: $gold;
+            text-decoration: none;
+        }  
+    }
+// set border
+    @mixin set-Border($Radius) {
+        border: none;
+        border-radius: $Radius;
+    }
+//set text 
+    @mixin set-SizeColor($_Size,$_Color) {
+        font-size: $_Size;
+        color: $_Color;
+    }
+
+
+//set heigh _ linehight
+@mixin set_LineHeight($_Height) {
+    height: $_Height;
+    line-height: $_Height;
+}
+
+// set hidden an di ptu
+@mixin set_Hidden {
+    visibility: hidden;
+    display: none;
+}
+// set visible hien thi ptu bi an
+@mixin set_Visible {
+    visibility: visible;
+    display: block;
+}
+
+
+//set animate txt slide
+
+@mixin set_Opacity{
+    opacity: 0;
+    transition: 0.4s;
+}
+
+
+
+
+body{
+    @include set_MP(0px, 0px);
+    font-family: $fontLato;
+}
+
+/* nav-fix  man hinh scroll*/
+.fixed__header .header__content{
+    position: fixed;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 99;
+    top: -20px;
+    
+    height: 80px;
+  }
+/* nav-fixed end */
+//header css___________
+header{
+    .header__top{
+        background: $xamDam;
+        @include set_LineHeight(40px);
+        // line-height: 40px;
+        .container{
+            display: flex;
+            padding: 0;
+        }
+            .top__left{
+                width: 30%;
+                display: flex;
+                div:nth-child(2){
+                    margin-left: 30px;
+                }
+                .left--item{
+                    color: $trangNhat;
+                    i{
+                        font-size: $txt_XL;
+                    }
+                    a{
+                        @include set-Tag-A($txt_S,$trangNhat);
+                    }
+                &:hover{
+                        @include set_Hover-bgColor(none, $gold);
+                        a{
+                            color: $Trang;
+                        }
+                    }
+                    
+                }
+            }
+            .top__right{
+                width: 70%;
+               text-align: right;
+               li{
+                   list-style: none;
+                   display: inline-flex;
+                   margin-left: 30px;
+                   a{
+                    @include set_Tag-A($txt_S, $trangNhat);   
+                   }
+                   
+                &:hover{
+                    @include set_Hover-Li(none);
+                }
+               }
+            }
+       // }    
+    }
+//end css header top
+    .header__content{
+        background: $Trang;
+        border-bottom: 1px solid $trangNhat;
+        .container{
+            display: flex;
+            padding: 30px 0px;
+        }
+        .content__search{
+            
+            // position: relative;
+            // display: flex;
+            border: 1px solid $xamTrang;
+
+            @include set_position-display(relative, flex);
+            @include set_WH(45%, 45px );
+            margin-left: 23%;
+            select{
+                width: 30%;
+                font-weight: bold;
+                border: none;
+                border-right: 2px solid $xamTrang;
+              
+            }
+            input{
+                padding-left: 20px;
+                width: 70%;
+                border: none;
+              
+            }
+            i{
+                @include set_absolute-TR(auto, 10px);
+                line-height: 45px;
+            }
+            clear: both;
+        }
+
+        .content__cart{
+          
+            @include set_WH(15%, 45px );
+             margin-left: 20px;
+            line-height: 45px;
+            border: 1px solid $xanhNhat;
+            display: flex;
+            span{
+                font-size: $txt_M;
+                font-weight: bold;
+                margin-left: 10px;
+            }
+            i{
+                @include set-SizeColor($txt_XL, $Trang);
+                padding: 12px;
+                background: $xanhNhat;
+                
+            }
+            &:hover{
+                
+                    @include set_Hover-bgColor($trangNhat, $gold);
+                
+                i{ 
+                   color: $gold;
+                }
+            } 
+         
+        }
+    }
+}
+
+//nav css_________________
+nav{
+        
+    .container{
+        display: flex;
+        @include set_LineHeight(50px);
+        padding: 0px;
+    .nav--btn{
+        padding: 0px 25px;
+        color: $Trang;
+        a{
+            @include set_Tag-A($txt_L, $Trang);
+            font-weight: bold;
+        }
+        
+        @include set_Hidden();
+    }
+    .listLink1{
+     
+        display: flex;
+        padding: 0px;
+        li{
+           
+            @include set_position-display(relative, inline-flex);
+            
+            margin-right: 15%;
+            list-style: none;
+            a{
+                @include set_Tag-A($txt_M, $xamDam);
+                font-weight: bold;
+            }
+            &:hover{
+                @include set_Hover-Li(none);
+                
+            }
+
+            .listLink2{
+                display: block;
+                @include set_absolute-TL(50px, 30px);
+                background: $xanhNhat;
+                z-index: 999;
+                width: 200px;
+               
+                //an danh sach nav menu c2
+                @include set_Hidden();
+                li{
+                    display: block;
+                    margin-left: 10px;
+                    padding-right: 30px;  
+                    border-bottom: 1px solid ;
+                    a{
+                        @include set_Tag-A($txt_M, $xamDam);
+                        font-weight: bold;
+                    }
+                    &:hover{
+                        @include set_Hover-Li(none);
+                      
+                    }
+                }
+                //tao tam giac xo len khi click nav menu cap 2
+                &::after{
+                    content: "";
+                   @include set_absolute-TL(-20px, 15px);
+                    border:10px solid $Trang; 
+                    border-bottom: 10px solid $xanhNhat;
+                }
+            }
+            // class hien thi nav menu c2
+            .Link2_active{
+                @include set_Visible();
+               
+               //tao hieu ung khi xuat hien
+               animation: activeNav 1s forwards;
+                @keyframes activeNav {
+                    from{transform: rotateY(-90deg); opacity: 0; transform-origin: 100% 100%; }
+                    to{transform: rotateY(0deg); opacity: 1;transform-origin: 100% 100%; }
+                }
+            }
+        }
+        .dropdown-toggle::after {
+           
+            @include set_Mg-TL(25px, 10px);
+           
+        }
+    }
+}
+}
+
+//section slider css____________________
+.slider{
+    .carousel-inner{
+        .carousel-item{
+            img{
+                position: relative;
+                @include set_WH(100%, auto);
+            }
+                .slide__txt{
+                        width: 45%;
+                        @include set_absolute-TL(20%, 15% );
+                        @include set_Opacity();
+                        h3, h1, p,  button{
+                            @include set_Opacity();
+                        }
+                        h3{
+                            @include set-SizeColor($txt_2XL,$Dam);
+                            
+                        }
+                        h1{
+                            @include set-SizeColor($txt_XXL,$Dam);
+                            font-family:$fontRale;
+                            font-weight: bold;
+                            
+                        }
+                        p{
+                            @include set-SizeColor($txt_M, $Dam);
+                            
+                        }
+                        
+                        button{
+                            // margin-top: 40px;
+                            // margin-left: 20px;
+                           
+                            @include set_Mg-TL(40px, 20px);
+                            @include set_WH(160px, 50px);
+                            @include set_btn-Col-Bg($Dam, $xamTrang);
+                            border: 2px solid $xanhNhat;
+                        &:hover{
+                            @include set_btn-Col-Bg($Trang, $Dam);
+                            }
+                        }
+
+                       
+           
+            }
+
+        }
+//carousel item la 1 div:nth()
+        div:nth-child(2){
+            .slide__txt{       
+                @include set_absolute-TL(20%, 45% );   
+        }
+        }
+        div:nth-child(3){
+            .slide__txt{
+                   
+                @include set_absolute-TL(20%, 30% );       
+        }
+        }
+
+    //   css phan slide txt animation
+        div.active{
+           .slide__txt{
+            transition: 0.4;
+            animation: txtSlide 1s forwards;
+     
+
+                h3, p{
+                    animation: h3_animate 1s forwards;
+
+                }
+               
+                @keyframes h3_animate {
+                    from{transform: translateX(-50%) ; opacity: 0;}
+                    to{transform: translateX(0) ; opacity: 1;}
+                }
+
+                h1, button{
+                    animation: h1_animate 1s forwards;
+                    animation-delay: 0.6s;
+                }
+                @keyframes h1_animate {
+                   
+                    from{transform: translateY(-40%) ; opacity: 0;}
+                    to{transform: translateY(0) ; opacity: 1;}
+                }
+           }
+           @keyframes txtSlide {
+            from{transform: translate(0, 0, -100%) ; opacity: 0;}
+            to{transform: translate(0, 0, 0) ; opacity: 1;}
+        }
+        }
+    }
+}
+
+#content{
+    // position: relative;
+    // display: grid;
+    @include set-position-display(relative, grid);
+
+    margin-top: 20px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: minmax(60px, auto);
+   
+    grid-gap: 20px;
+  
+    div.addLoad{
+        animation: loadUp 1s ease forwards;
+    }
+    @keyframes loadUp {
+        from{transform:translateY(100px);opacity:0}
+        to{transform:translateY(0px);opacity:1}
+    }
+}
+.feature{
+
+    
+    @include set_gridColumn-row(1 , 13, 1, 3);
+
+    grid-template-columns: repeat(3, 1fr);
+    
+    
+    .feature1{
+        position: relative;
+        height: 150px;
+        // background-image: url(./img_Goshop/feature1.jpg);
+        background-size: cover;
+        // height: 200px;
+        .txt_title{
+            @include set_absolute-TR(30%, 5%);
+            
+            color: $Trang;
+            font-size: bold;
+            b,i,p{
+                margin: 0px 10px;
+            }
+            b{
+                font-size: $txt_2XL;
+                
+            }
+            i{
+                font-size: $txt_XL;
+                
+            }
+            p{
+                font-size: $txt_L;
+            }
+        }
+    }
+   
+}
+//het feature
+.topRated{
+
+    @include set_gridColumn-row(1, 4, 3, 10);
+    border: 1px solid $trangNhat;
+    padding: 10px;
+
+
+    h3{
+        // position: relative;
+        // display: grid;
+        @include set_position-display(relative, grid);
+
+        font-size: $txt_2XL;
+        align-self: center;
+        text-align: center;
+        margin: 0px;
+        padding-bottom: 10px;
+  
+        
+    }
+    
+    .rate__product{
+        border-top: 1px solid $xamTrang;
+        display: flex;
+        padding: 20px 0px;
+        img{
+            // @include set_WH(80px, 120px);
+            cursor: pointer;
+        }
+       
+        .product__title{
+            margin-left: 20px;
+            p, h4{
+                margin: 0px 5px 5px 5px;
+            }
+        }
+    }
+}
+
+
+.advs1{
+
+    @include set_gridColumn-row(1, 4 , 10, 15);
+    img{
+        width: 100%;
+        cursor: pointer;
+        @include set-Border(3px);
+        display: none;
+        
+    }
+    
+    .advs1_img-active{
+        display: block;
+    }
+    
+       
+    .advs__sale{
+    
+    @include set_absolute-TL(50%, 15%);
+    z-index: 99;
+    color: white;
+    text-align: center;
+    animation: advs1 1s forwards;
+       fieldset{
+           border: 3px solid white;
+           padding: 0px 10px;
+            h1{
+                font-size: 30px;
+                margin: 0px;
+            }
+                span{
+                    font-size: 14px;
+                    margin: 5px;
+                
+                }
+        }
+    }
+    @keyframes advs1 {
+        from{transform:translateY(-100%);opacity:0}
+        to{transform:translateY(0) ;opacity:1}
+       }
+    .advs__sale--hidden{
+        @include set_Hidden();
+    }
+}
+.spTestimonial{
+
+    @include set_gridColumn-row(1, 4, 15, 19);
+
+    border: 1px solid $trangNhat;
+    
+    text-align: center;
+    padding: 10px;
+    h2{
+        font-size: $txt_2XL;
+        border-bottom: 1px solid $trangNhat;
+        margin: 0px;
+
+    }
+    p{
+        margin-top: 10px;
+        padding: 0px 5px;
+    }
+    img{
+        justify-self: center;
+    }
+    h3{
+        font-size: $txt_XL;
+        margin-top: 10px;
+    }
+    span{
+        font-size: $txt_L;
+        margin: 0px;
+    }
+    .sptest__btn{
+        display: flex;
+        margin: 10px;
+        justify-content: center;
+        
+        a{
+            margin: 0px 10px;
+            border: 1px solid $trangNhat;
+            @include set-SizeColor(20px, $Dam);
+            @include set_WH(30px, 30px);
+            &:hover{
+               
+                @include set_Hover-bgColor($trangNhat, $gold );
+                
+            }
+        }
+        
+        
+    }
+}
+.spBrand{
+
+    @include set_gridColumn-row(1, 4, 19, 23);
+    
+    border: 1px solid $trangNhat;
+    text-align: center;
+    padding: 10px;
+    h2 {
+        border-bottom: 1px solid $Xam;
+    }
+
+    .spbrand-img img {
+        margin: 4px;
+        cursor: pointer;
+    }
+    
+    .sptest__btn{
+        display: flex;
+        margin: 10px;
+        justify-content: center;
+     a {
+        margin: 5px;
+
+        border: 1px solid;
+        font-size: 20px;
+
+        @include set_WH(30px, 30px);
+    }
+    }
+}
+
+////________-het ben trai
+.product{
+    i{
+        color: $gold;
+        cursor: pointer;
+    }
+
+    @include set_gridColumn-row(4, 13, 3, 11);
+    border: 1px solid $trangNhat;
+    padding: 10px;
+    .product__catalog{
+
+        @include set_gridColumn-row(4, 13, 3, 4);
+        border-bottom: 1px solid $trangNhat;
+
+        >a {
+            // padding: 5px;
+            border: 1px solid $trangNhat;
+            z-index: 9;
+
+            i{
+
+                @include set-SizeColor(30px, $Xam);
+                width: 30px;
+                text-align: center;
+               
+            }
+            &:hover{
+                background: $Xam;
+                i{
+                    color: $gold;
+                }
+            }
+            
+        }
+         >a:nth-child(1) {
+            @include set_absolute-TL(0px, 0);
+        }
+        
+         >a:nth-child(2) {
+        @include set_absolute-TR(0px, 0);
+            
+        }
+        
+
+    
+        ul {
+            list-style: none;
+            display: flex;
+
+                margin: 0px;
+                padding-bottom: 10px;
+            li {
+                margin-left: 30px;
+                width: 30%;
+                border-right: 1px solid $trangNhat;
+                position: relative;
+                a{
+                    @include set_Tag-A($txt_2XL,$Dam )
+                    }
+
+                    &:hover{
+                        @include set_Hover-Li(none);
+                    }
+            }
+            li:last-child {
+                border: none;
+            
+            }
+            
+        }
+            
+            
+    
+    }
+ 
+// css san pham 
+    .product__sp{
+
+
+        @include set_gridColumn-row(4, 13,  4, 11  );
+        grid-template-columns:repeat(4,1fr);
+        grid-gap: 10px;
+        grid-row-gap: 15px;
+        .sp__00{
+            padding-top: 20px;
+            text-align: center;
+            position: relative;
+            img{
+                cursor: pointer;
+
+            }
+            h3{
+                margin-top:10px;
+                font-weight: bold;
+                @include set-SizeColor($txt_L, $trangNhat);
+
+            }
+            p{
+                margin: 5px;
+            }
+            label{
+                @include set_absolute-TL(20px, 5px);
+                
+                background: black;
+                color: white;
+                text-transform: uppercase;
+                @include set_WH(50px, 24px);
+
+                &:hover{
+
+                    @include set_Hover-bgColor($Xam, $gold);
+                }
+            }
+        }
+    }
+    
+}
+
+// het thong tin san pham
+.advs2{
+
+    @include set_gridColumn-row(4, 13, 11, 14);
+    border: 1px solid $trangNhat;
+    img{
+        width: 100%;
+    }
+    h1{
+
+        @include set_absolute-TL(50px, 50%);
+        transform: translateX(-50%);
+    }
+    b{
+
+        @include set_absolute-TL(0px, 62%);
+        // transform: translateX(-50%);
+        font-size: 20px;
+       
+        span{
+            font-size: 30px;
+            margin: 2px;
+        }
+    }
+    p{
+     
+        @include set_absolute-BL(0px, 20%);
+        /* transform: translateX(-50%); */
+        font-size: 20px;
+    
+    }
+    
+}
+
+// san pham special
+
+.speciaProduct{
+    
+     @include set_gridColumn-row(4, 13, 14, 20);   
+    border: 1px solid $trangNhat;
+   
+    padding: 10px;
+    text-align: center;
+    .speciaProduct__title{
+
+        @include set_gridColumn-row(4, 13, 14, 15);
+        border-bottom: 1px solid $trangNhat;
+        // padding:10px;
+        
+        h3{
+            font-size: $txt_2XL;
+        }
+    }
+    .speciaProduct__sp{
+ 
+        @include set_gridColumn-row(4, 13, 15, 20);
+        grid-template-columns:repeat(3,1fr);
+        grid-template-rows: repeat(3,1fr);;
+        grid-gap: 10px;
+        grid-row-gap: 20px;
+        padding: 15px 5px;
+        div.sp__02:nth-child(1){
+
+            @include set_gridColumn-row(1, 2, 1, 4);
+        }
+        .sp__02{
+
+            @include set_position-display(relative, flex);
+
+            img{
+                cursor: pointer;
+
+            }
+            h3{
+                margin-top:10px;
+               
+                font-weight: bold;
+ 
+                @include set-SizeColor($txt_L, $trangNhat);
+            }
+            p{
+                margin: 5px;
+            }
+            i{
+                color: $gold;
+                cursor: pointer;
+            }
+            label{
+                @include set_absolute-TL(0px, 0px);
+                
+                background: red;
+                color: white;
+                text-transform: uppercase;
+                @include set_WH(40px, 20px);
+
+                &:hover{
+              
+                    @include set_Hover-bgColor($Xam, $gold);
+                }
+            }
+        }
+    }
+}
+// het san pham special
+.spNews{
+ 
+    @include set_gridColumn-row(4, 13, 20, 23);
+
+    border: 1px solid $trangNhat;
+   
+    text-align: center;
+    img{
+        width: 100%;
+        position: relative;;
+    }
+    .new__title {
+
+        @include set_absolute-TL(15%, 15%);
+
+        h2 {
+            font-size: 30px;
+            font-weight: 600;
+        }
+        p {
+            margin: 5px;
+        }
+
+        .btn_inTxt{
+            margin-top: 20px;
+         input {
+            width: 80%;
+            margin: 15px 0px;
+        }
+        a {
+            background: black;
+            color: white;
+         
+            // border: none;
+            // border-radius: 5px;
+            @include set-Border(5px);
+            padding: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            &:hover{
+                @include set_Hover-bgColor($xanhNhat, $gold);
+            }
+        }
+        }
+        
+        
+    }
+    
+    
+}
+
+// advs3-4 bottom
+.advs3{
+
+    @include set_gridColumn-row(1, 13, 23, 25);
+    border: 1px solid $trangNhat;
+   
+    grid-template-columns:repeat(2,1fr);
+    gap: 20px;
+    .advs__new{
+        position: relative;
+    
+        img{
+            width: 100%;
+            position: relative;
+    
+        }
+        .advsNew--title{
+
+            @include set_absolute-TL(30px, 50%);
+        }
+    }
+}
+
+// css lastNew
+
+#blogs{
+    padding:2rem 1rem;
+    
+    
+    
+}
+ 
+.blog__item{
+    width: calc(33%-2rem);
+    margin: 1rem;
+  }
+
+// css fotter________
+footer{
+   
+    background: $Dam;
+    color: $Trang;
+    .footer__content{
+        padding-left: 100px;
+        padding-top: 40px;
+        padding-bottom: 30px;
+        background-color: $xanhNhat;
+        font-size: 14px;
+        color:$Trang;
+        .footer__slogan{
+            a{
+                font-size: 18px;
+                color: $gold;
+                font-weight: 600;
+            }
+            p{
+                font-size: 14px;
+                margin-top: 15px;
+            }
+        }
+        .footer__title{
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+       
+            
+        .footer__form{
+                display: flex;
+                margin-top: 15px;
+                div:first-child{
+                    padding-left:0;
+                }
+                input, button{
+                    font-size: 14px;
+                }
+            }
+            
+            .footer__list{
+                
+                .footer__link{
+                    color: $xamTrang;
+                }
+            }
+    }
+    // 
+
+    .footerEnd{
+        margin-top: 20px;
+        padding-bottom: 20px;
+        background: $trangNhat;
+        fieldset{
+        
+            border-width: 5px 0px 0px !important;
+            border-color: $Trang;
+            border: 1px solid;
+            legend{
+                text-align: center;
+                padding: 25px;
+                width:36% ;
+            }
+
+        }
+        p{
+            text-align: center;
+        }
+    }
+}
+
+// /*-- Code cho màn hình nhỏ (Mobile) viết ở đây --*/
+
+
