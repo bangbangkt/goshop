@@ -11,7 +11,7 @@ $(document).ready(function () {
                 $("body").removeClass("fixed__header");
             }
         });
-    // carousel top sale
+    // carousel blog
   $("#blogs .owl-carousel").owlCarousel({
     loop:true,
     nav:false,
@@ -29,28 +29,7 @@ $(document).ready(function () {
     }
     
   });
-    //nav menu show responsive
-    //     $(".nav--btn").click(function () { 
-    //         $(".nav__menu").toggleClass("nav__active");
-    //     });
-    
-    // // nav cap 2
-    //     $("#blogList").mousemove(function () { 
-    //      $(".listLink2").toggleClass("Link2_active");
-            
-    //     });
-    //     $(selector).mousemove(function (e) { 
-    //         // values: e.clientX, e.clientY, e.pageX, e.pageY
-            
-    //     });
-    //     $("#blogList").mouseover(function () { 
-    //         $(".listLink2").addClass("Link2_active");
-            
-    //     });
-    //     $("#blogList").mouseout(function () { 
-    //         $(".listLink2").removeClass("Link2_active");
-    //     });
-      
+   
     
         
 });
@@ -101,18 +80,7 @@ window.addEventListener("scroll", function(){
 })
 // xu ly auto slider sdvs1
 
-// let advsImg = document.querySelector(".advs1 img:nth-child(2)");
-// let imgSTT = 1;
-// setInterval(function(){
-//     if(imgSTT == 1){
 
-//         advsImg.classList.remove("advs1_img-active");
-//         imgSTT = 2;
-//     }else{
-//         advsImg.classList.add("advs1_img-active");
-//         imgSTT = 1;
-//     }
-// }, 2000);
 
 let advsImg = document.querySelectorAll(".advs1 img");
 let advsTitle = document.querySelector(".advs1 .advs__sale");
